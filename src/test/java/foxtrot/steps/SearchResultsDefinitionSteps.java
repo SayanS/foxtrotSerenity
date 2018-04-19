@@ -19,8 +19,9 @@ public class SearchResultsDefinitionSteps {
         searchResultsPage.openProductDetailsPageFor(productName);
     }
 
-    @When("^Add to cart product \"([^\"]*)\" from Search results page$")
+    @When("^Click on Add to cart button for product \"([^\"]*)\" on Search results page$")
     public void addToCartProductFromSearchResultsPage(String productName) {
       searchResultsPage.clickOnAddToCartButton(productName);
     }
+
 }

@@ -4,6 +4,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import foxtrot.pages.HomePageObject;
+import foxtrot.pages.PreCartPopup;
 import foxtrot.steps.serenity.ShopEndUserSteps;
 import net.thucydides.core.annotations.Steps;
 
@@ -12,6 +13,8 @@ public class ShopDefinitionSteps {
     ShopEndUserSteps shopEndUserSteps;
     @Steps
     HomePageObject homePage;
+    @Steps
+    PreCartPopup preCartPopup;
 
     @Given("^Home page is opened$")
     public void homePageIsOpened() throws Throwable {
@@ -32,5 +35,21 @@ public class ShopDefinitionSteps {
     public void globalSearchFor(String text) {
         homePage.getHeader().enterIntoGlobalSearchField(text);
         homePage.getHeader().clickOnGlobalSearchButton();
+    }
+
+    @Then("^PreCart pop-up should be opened$")
+    public void precartPopUpShouldBeOpened(){
+        preCartPopup.ensureThatPreCartPopupIsOpened();
+    }
+
+    @Then("^PreCart pop-up should contain product \"([^\"]*)\"$")
+    public void precartPopUpShouldContainProduct(String productName) {
+        preCartPopup.ensureThatPreCartPopupContainsProduct(productName);
+    }
+
+    @When("^Click on Go to Cart button on PreCart pop-up$")
+    public void clickOnGoToCartButtonOnPreCartPopUp(){
+      preCartPopup.clickOnGoToCartButton();
+
     }
 }
