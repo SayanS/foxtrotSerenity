@@ -3,6 +3,7 @@ package foxtrot.pages;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import java.util.ArrayList;
@@ -22,6 +23,10 @@ class MyPageObject extends PageObject {
 
     protected void scrollIntoView(String xpath) {
         ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", findBy(xpath));
+    }
+
+    protected void scrollIntoView(WebElementFacade webElementFacade) {
+        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", (WebElement)webElementFacade);
     }
 
     protected void scrollIntoView(String xpath, int offset_y){
