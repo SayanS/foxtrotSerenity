@@ -40,4 +40,15 @@ class MyPageObject extends PageObject {
         return webElementFacade;
     }
 
+    protected WebElementFacade getWebElement(String xpathOrCss,String text) {
+        List<String> webElementsText = texts(xpathOrCss);
+        for (int i = 0; i < webElementsText.size(); i++) {
+            if (webElementsText.get(i).equals(text)) {
+                return findBy(xpathOrCss + "[" + (i+1) + "]");
+            }
+        }
+        return null;
+    }
+
+
 }

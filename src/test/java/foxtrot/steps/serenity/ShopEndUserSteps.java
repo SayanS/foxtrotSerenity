@@ -1,12 +1,12 @@
 package foxtrot.steps.serenity;
 
-import foxtrot.pages.HomePageObject;
+import foxtrot.pages.HomePage;
 import net.thucydides.core.annotations.Step;
 
 import static net.serenitybdd.core.pages.PageObject.withParameters;
 
 public class ShopEndUserSteps {
-    HomePageObject homePage;
+    HomePage homePage;
 
     @Step
     public void openHomePage() {

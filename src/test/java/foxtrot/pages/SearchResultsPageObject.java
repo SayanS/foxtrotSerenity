@@ -9,7 +9,7 @@ public class SearchResultsPageObject extends BasePage {
     private String PRODUCT_ITEMS ="//div[@class='main']//div[@class='product-item']";
     private String PRODUCT_CONTAINERS="//div[@class='btn to-cart-button']/ancestor::div[@class='product-item']";
     private String ADD_TO_CART_BUTTON="("+PRODUCT_ITEMS+"//button[@class='addToCartButton ']"+")";
-    private String PRODUCT_ITEM_TITLES="("+PRODUCT_ITEMS+"/div/a[contains(@href,'/ru/shop/')][1]"+")";
+    private String PRODUCT_ITEM_TITLES="("+PRODUCT_ITEMS+"/div/a[contains(@href,'/ru/features/')][1]"+")";
 
     private String STOCK_STATUS_PRODUCT_DIV="("+PRODUCT_ITEMS+"//form[@class='add_to_cart_form']/div[1]"+")";
 
@@ -84,7 +84,7 @@ public class SearchResultsPageObject extends BasePage {
     public void openProductDetailsPageFor(String productName){
         Integer index=getIndexOfContainer(productName);
         scrollIntoView(PRODUCT_ITEMS+"["+index+"]");
-        findBy(PRODUCT_ITEMS+"["+index+"]"+PRODUCT_ITEM_TITLES).click();
+        findBy(PRODUCT_ITEM_TITLES+"["+index+"]").click();
     }
 
     @Step

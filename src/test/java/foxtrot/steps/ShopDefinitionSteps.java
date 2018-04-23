@@ -3,8 +3,9 @@ package foxtrot.steps;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import foxtrot.pages.HomePageObject;
+import foxtrot.pages.HomePage;
 import foxtrot.pages.PreCartPopup;
+import foxtrot.pages.ShopPage;
 import foxtrot.steps.serenity.ShopEndUserSteps;
 import net.thucydides.core.annotations.Steps;
 
@@ -12,13 +13,16 @@ public class ShopDefinitionSteps {
     @Steps
     ShopEndUserSteps shopEndUserSteps;
     @Steps
-    HomePageObject homePage;
+    HomePage homePage;
     @Steps
     PreCartPopup preCartPopup;
+    @Steps
+    ShopPage shopPage;
+
 
     @Given("^Home page is opened$")
-    public void homePageIsOpened() throws Throwable {
-        shopEndUserSteps.openHomePage();
+    public void homePageIsOpened() {
+       shopEndUserSteps.openHomePage();
     }
 
     @When("^Enter \"([^\"]*)\" into Global search field$")
@@ -51,5 +55,20 @@ public class ShopDefinitionSteps {
     public void clickOnGoToCartButtonOnPreCartPopUp(){
       preCartPopup.clickOnGoToCartButton();
 
+    }
+
+    @When("^Select \"([^\"]*)\" from the Header Catalog menu$")
+    public void selectFromTheHeaderCatalogMenu(String itemName){
+       homePage.getHeader().selectCatalogMenuItem(itemName);
+    }
+
+    @Then("^URL of the Current page should contain \"([^\"]*)\"$")
+    public void urlOfTheCurrentPageShouldContain(String pageName) {
+        shopPage.ensureThatCurrentURLContains(pageName);
+    }
+
+    @Then("^Shop page should be opened with \"([^\"]*)\"$")
+    public void shopPageShouldBeOpenedWith(String title) {
+        shopPage.ensureThatPageTitleIs(title);
     }
 }

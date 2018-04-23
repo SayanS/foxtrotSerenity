@@ -27,10 +27,8 @@ public class HeaderPage extends MyPageObject {
     }
 
     @Step
-    public String selectCatalogMenuItem(Integer index){
-        String itemName=findBy(CATALOG_MENU_ITEMS+"["+index+"]").getText();
-        findBy(CATALOG_MENU_ITEMS).click();
-        return itemName;
+    public void selectCatalogMenuItem(String itemName){
+        getWebElement(CATALOG_MENU_ITEMS,itemName).click();
     }
 
 
