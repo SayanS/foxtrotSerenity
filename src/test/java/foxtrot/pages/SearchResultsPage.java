@@ -1,26 +1,21 @@
 package foxtrot.pages;
 
 import net.serenitybdd.core.pages.WebElementFacade;
-import net.thucydides.core.annotations.Step;
-import org.junit.Assert;
 
-public class SearchResultsPageObject extends BasePage {
+public class SearchResultsPage extends BasePage {
     private String PAGE_TITLE = "//h1";
     private String PRODUCT_ITEMS ="//div[@class='main']//div[@class='product-item']";
     private String PRODUCT_CONTAINERS="//div[@class='btn to-cart-button']/ancestor::div[@class='product-item']";
     private String ADD_TO_CART_BUTTON="("+PRODUCT_ITEMS+"//button[@class='addToCartButton ']"+")";
-    private String PRODUCT_ITEM_TITLES="("+PRODUCT_ITEMS+"/div/a[contains(@href,'/ru/features/')][1]"+")";
-
+    private String PRODUCT_ITEM_TITLES="("+PRODUCT_ITEMS+"/div/a[contains(@href,'/shop/')][1]"+")";
     private String STOCK_STATUS_PRODUCT_DIV="("+PRODUCT_ITEMS+"//form[@class='add_to_cart_form']/div[1]"+")";
-
     private String PAGINATION_BAR="//div[@class='pagination']";
     private String PAGINATION_NEXT_PAGE_BUTTON="//li[@class='next']/a";
     private String PAGINATION_PREV_PAGE_BUTTON="//li[@class='prev']/a";
     private String PAGINATION_BUTTONS="//div[@class='pagination']/ul/li";
 
-    @Step
-    public void ensureThatPageTitleContains(String text) {
-        Assert.assertTrue("Expected: " + text + " but was Actual: " + $(PAGE_TITLE).getText(), $(PAGE_TITLE).getText().toLowerCase().contains(text.toLowerCase()));
+    public String getTitle() {
+        return $(PAGE_TITLE).getText();
     }
 
     private Integer getNumberOfPagesInPagination() {
@@ -79,22 +74,18 @@ public class SearchResultsPageObject extends BasePage {
         return null;
     }
 
-
-    @Step
     public void openProductDetailsPageFor(String productName){
         Integer index=getIndexOfContainer(productName);
         scrollIntoView(PRODUCT_ITEMS+"["+index+"]");
         findBy(PRODUCT_ITEM_TITLES+"["+index+"]").click();
     }
 
-    @Step
     public void clickOnAddToCartButton(String productName){
         Integer index=getIndexOfContainer(productName);
         scrollIntoView(PRODUCT_ITEM_TITLES+"["+index+"]");
         moveTo(ADD_TO_CART_BUTTON+"["+index+"]").click();
     }
 
-    @Step
     public void clickOnAddToCartButton(String stockStatus, Integer sequenceNumber){
         WebElementFacade container=getProductContainer(stockStatus,sequenceNumber);
         scrollIntoView(container);

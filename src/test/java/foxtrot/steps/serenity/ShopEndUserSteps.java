@@ -1,15 +1,16 @@
 package foxtrot.steps.serenity;
 
-import foxtrot.pages.HomePage;
+import foxtrot.pages.ShopPage;
 import net.thucydides.core.annotations.Step;
-
-import static net.serenitybdd.core.pages.PageObject.withParameters;
+import org.junit.Assert;
 
 public class ShopEndUserSteps {
-    HomePage homePage;
+
+    ShopPage shopPage;
 
     @Step
-    public void openHomePage() {
-        homePage.open("base.url", withParameters("https://kharkiv.foxtrot.ua/"));
+    public void ensureThatPageTitleIs(String title) {
+        Assert.assertEquals(title,shopPage.getTitle());
     }
+
 }

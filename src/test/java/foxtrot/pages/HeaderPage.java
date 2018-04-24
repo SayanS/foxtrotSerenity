@@ -1,32 +1,25 @@
 package foxtrot.pages;
 
-import net.thucydides.core.annotations.Step;
-import org.junit.Assert;
+import java.util.List;
 
-public class HeaderPage extends MyPageObject {
+public class HeaderPage extends BasePage {
     String GLOBAL_SEARCH_FIELD = "//input[@id='search_input']";
     String GLOBAL_SEARCH_FIELD_AUTOCOMPLETE_GOODS = "//ul[@id='ui-id-1']/li/a//div[@class='name']";
     String GLOBAL_SEARCH_BUTTON = "(//button[@class='siteSearchSubmit'])[1]";
     String CATALOG_MENU_ITEMS = "(//ul[@class='catalog-menu']/li[@class='La mega__menu  auto']/a)";
 
-    @Step
     public void enterIntoGlobalSearchField(String text) {
         $(GLOBAL_SEARCH_FIELD).sendKeys(text);
     }
 
-    @Step
-    public void ensureThatGlobalSearchDropDownListContains(String expectedText) {
-        texts(GLOBAL_SEARCH_FIELD_AUTOCOMPLETE_GOODS).stream().
-                forEach(actualText -> Assert.assertTrue("Expected: " + expectedText + "Actual: " + actualText,
-                        actualText.toLowerCase().contains(expectedText.toLowerCase())));
+    public List<String> getGlobalSearchDropDownValues() {
+        return texts(GLOBAL_SEARCH_FIELD_AUTOCOMPLETE_GOODS);
     }
 
-    @Step
     public void clickOnGlobalSearchButton() {
         $(GLOBAL_SEARCH_BUTTON).click();
     }
 
-    @Step
     public void selectCatalogMenuItem(String itemName){
         getWebElement(CATALOG_MENU_ITEMS,itemName).click();
     }

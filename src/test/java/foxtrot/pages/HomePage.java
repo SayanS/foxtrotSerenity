@@ -1,9 +1,8 @@
 package foxtrot.pages;
 
-import net.thucydides.core.annotations.NamedUrl;
-import net.thucydides.core.annotations.NamedUrls;
+import net.thucydides.core.annotations.DefaultUrl;
 
-@NamedUrls({@NamedUrl(name = "base.url", url = "{1}")})
-public class HomePage extends BasePage {
+@DefaultUrl("https://kharkiv.foxtrot.ua")
+public class HomePage extends BasePage{
 
 }

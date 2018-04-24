@@ -5,5 +5,5 @@ import net.serenitybdd.cucumber.CucumberWithSerenity;
 import org.junit.runner.RunWith;
 
 @RunWith(CucumberWithSerenity.class)
-@CucumberOptions(features={"./src/test/resources/features/features/globalSearch.feature"}, tags = {"@run"})
+@CucumberOptions(features={"./src/test/resources/features/shop/"}, tags = {"@run"})
 public class DefinitionTestSuite {}
