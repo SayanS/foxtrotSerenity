@@ -9,8 +9,8 @@ public class SearchResultsDefinitionSteps {
     @Steps
     SearchResultsPageSteps searchResultsPageSteps;
 
-    @Then("^Page title should contain \"([^\"]*)\"$")
-    public void pageTitleShouldContain(String text) {
+    @Then("^The Title of Search results page should contain \"([^\"]*)\"$")
+    public void titleOfSearchResultsPageShouldContain(String text) {
         searchResultsPageSteps.ensureThatPageTitleContains(text);
     }
 

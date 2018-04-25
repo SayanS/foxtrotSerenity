@@ -9,6 +9,8 @@ import foxtrot.steps.serenity.PreCartPopUpSteps;
 import foxtrot.steps.serenity.ShopEndUserSteps;
 import net.thucydides.core.annotations.Steps;
 
+import java.util.Map;
+
 public class ShopDefinitionSteps {
     @Steps
     BasePageSteps basePageSteps;
@@ -70,5 +72,11 @@ public class ShopDefinitionSteps {
     @Then("^Shop page should be opened with \"([^\"]*)\"$")
     public void shopPageShouldBeOpenedWith(String title) {
         shopEndUserSteps.ensureThatPageTitleIs(title);
+    }
+
+
+    @When("^Add to Cart product from Shop page productNumber/stockStatus$")
+    public void addToCartProductFromShopPageNumberStockStatus(Map<String, String> conditionals){
+        shopEndUserSteps.addProductsToCart(conditionals);
     }
 }

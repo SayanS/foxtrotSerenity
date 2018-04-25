@@ -50,10 +50,13 @@ public class BasePage extends PageObject {
         }
         return null;
     }
+
     public String getCurrentURL(){
         return getDriver().getCurrentUrl();
     }
 
 
-
+    public void clickOn(String xpathOrCss) {
+        $(xpathOrCss).click();
+    }
 }

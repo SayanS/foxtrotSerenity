@@ -21,4 +21,5 @@ public class SearchResultsPageSteps {
     public void ensureThatPageTitleContains(String text) {
         Assert.assertTrue("Expected: " + text + " but was Actual: " +searchResultsPage.getTitle(), searchResultsPage.getTitle().contains(text));
     }
+
 }

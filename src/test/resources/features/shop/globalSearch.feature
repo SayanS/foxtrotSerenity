@@ -1,7 +1,7 @@
 Feature: Header - Global search
 
-#  Background: Precondition steps
-#    Given Home page is opened
+  Background: Precondition steps
+    Given Home page is opened
 
   @old
   Scenario: Check Search results list of the Global Search field
@@ -11,7 +11,7 @@ Feature: Header - Global search
   @old
   Scenario Outline: Check Global Search functionality
     When Global search for "<text>"
-    Then Page title should contain "<text>"
+    Then The Title of Search results page should contain "<text>"
     Examples:
       | text                        |
       | Телевизор SONY KDL43WE754BR |
@@ -29,6 +29,15 @@ Feature: Header - Global search
     Then PreCart pop-up should contain product "Пылесос THOMAS Perfect Air Animal Pure"
     When Click on Go to Cart button on PreCart pop-up
 
+  @run
+  Scenario: Check ability to Add product to the Cart from Shop page
+    When Select "Смартфоны" from the Header Catalog menu
+    When Add to Cart product from Shop page productNumber/stockStatus
+      | 33| inStock |
+      | 1 | inStock |
+      | 3  | inStock |
+
+
   @old
   Scenario Outline: Check ability to open Shop page for appropriate Product group
     When Select "<itemName>" from the Header Catalog menu
@@ -45,12 +54,13 @@ Feature: Header - Global search
 #      | Пылесосы          | /shop/pylesosy.html          | Пылесосы           |
 #      | Микроволновки     | /shop/mikrovolnovki.html     | Микроволновые печи |
 
-  @run
+  @old
   Scenario: Check email notification
     When Read email messages with credentials
       | email      | lloydp2017@gmail.com |
       | password   | Rfhfylfitkm12r       |
       | imapServer | imap.gmail.com       |
       | imapPort   | 993                  |
+
 
 
