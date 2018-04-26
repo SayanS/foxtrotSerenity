@@ -10,16 +10,17 @@ public class SearchResultsPageSteps {
 
     @Step
     public void openProductDetailsPageFor(String productName) {
-        searchResultsPage.openProductDetailsPageFor(productName);
+        searchResultsPage.getProductListContainer().clickOnTitleOfContainer(productName);
     }
+
     @Step
     public void clickOnAddToCartButton(String productName) {
-        searchResultsPage.clickOnAddToCartButton(productName);
+            searchResultsPage.getProductListContainer().clickOnAddToCartButton(productName);
     }
 
     @Step
     public void ensureThatPageTitleContains(String text) {
-        Assert.assertTrue("Expected: " + text + " but was Actual: " +searchResultsPage.getTitle(), searchResultsPage.getTitle().contains(text));
+        Assert.assertTrue("Expected: " + text + " but was Actual: " + searchResultsPage.getTitle(), searchResultsPage.getTitle().contains(text));
     }
 
 }

@@ -16,10 +16,10 @@ Feature: Header - Global search
       | text                        |
       | Телевизор SONY KDL43WE754BR |
 
-  @old
+  @run
   Scenario: Check ability to open Product details page form Search results
     When Global search for "Пылесос"
-    When Open Product details page of "Пылесос THOMAS Perfect Air Animal Pure"
+    When Open Product details page of "Пылесос циклонный ROWENTA RO539621"
 
   @old
   Scenario: Check ability to Add product to the cart from Search results page
@@ -29,13 +29,13 @@ Feature: Header - Global search
     Then PreCart pop-up should contain product "Пылесос THOMAS Perfect Air Animal Pure"
     When Click on Go to Cart button on PreCart pop-up
 
-  @run
+  @old
   Scenario: Check ability to Add product to the Cart from Shop page
     When Select "Смартфоны" from the Header Catalog menu
-    When Add to Cart product from Shop page productNumber/stockStatus
-      | 33| inStock |
-      | 1 | inStock |
-      | 3  | inStock |
+    When Click on Add to Cart button for items number
+      | 1 |
+      | 2 |
+      | 3 |
 
 
   @old

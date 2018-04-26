@@ -9,7 +9,7 @@ import foxtrot.steps.serenity.PreCartPopUpSteps;
 import foxtrot.steps.serenity.ShopEndUserSteps;
 import net.thucydides.core.annotations.Steps;
 
-import java.util.Map;
+import java.util.List;
 
 public class ShopDefinitionSteps {
     @Steps
@@ -74,9 +74,8 @@ public class ShopDefinitionSteps {
         shopEndUserSteps.ensureThatPageTitleIs(title);
     }
 
-
-    @When("^Add to Cart product from Shop page productNumber/stockStatus$")
-    public void addToCartProductFromShopPageNumberStockStatus(Map<String, String> conditionals){
-        shopEndUserSteps.addProductsToCart(conditionals);
+    @When("^Click on Add to Cart button for items number$")
+    public void clickOnAddToCartButtonForItemsNumber(List<Integer> itemNumbers) {
+        shopEndUserSteps.clickOnAddToCartButtonFor(itemNumbers);
     }
 }

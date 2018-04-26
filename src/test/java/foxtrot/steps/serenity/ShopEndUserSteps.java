@@ -5,7 +5,7 @@ import foxtrot.pages.ShopPage;
 import net.thucydides.core.annotations.Step;
 import org.junit.Assert;
 
-import java.util.Map;
+import java.util.List;
 
 public class ShopEndUserSteps {
 
@@ -18,11 +18,10 @@ public class ShopEndUserSteps {
     }
 
     @Step
-    public void addProductsToCart(Map<String, String> conditionals) {
-        conditionals.forEach((productNumber, stockStatus) -> {
-            shopPage.getProductListContainer().clickOnAddToCartButton(stockStatus, Integer.valueOf(productNumber));
+    public void clickOnAddToCartButtonFor(List<Integer> itemNumbers) {
+        itemNumbers.forEach(itemNumber -> {
+            shopPage.getProductListContainer().clickOnAddToCartButton(itemNumber);
             preCartPopup.close();
         });
-
     }
 }

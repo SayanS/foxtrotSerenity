@@ -12,12 +12,9 @@ public class SearchResultsPage extends BasePage {
         return $(PAGE_TITLE).getText();
     }
 
-
-    public void openProductDetailsPageFor(String productName) {
-        productListContainer.openProductDetailsPageFor(productName);
+    public ProductListContainer getProductListContainer() {
+        return productListContainer;
     }
 
-    public void clickOnAddToCartButton(String productName) {
-        productListContainer.clickOnAddToCartButton(productName);
-    }
+
 }

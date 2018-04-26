@@ -3,6 +3,8 @@ package foxtrot.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.concurrent.TimeUnit;
+
 public class PreCartPopup extends BasePage {
     private String TITLE = "//div[@id='popup-precart']//div[@class='popup-header']/p";
     private String PRODUCT_NAME = "//div[@id='popup-precart']//div[@class='popup-body']//div[@class='name']/p";
@@ -29,6 +31,7 @@ public class PreCartPopup extends BasePage {
 
 
     public void close() {
-        $(CLOSE_BUTTON).click();
+        withTimeoutOf(5,TimeUnit.SECONDS).waitFor(ExpectedConditions.visibilityOfElementLocated(By.xpath(CLOSE_BUTTON)));
+        moveTo(CLOSE_BUTTON).click();
     }
 }
